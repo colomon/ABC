@@ -1,6 +1,7 @@
 {
     "perl"        : "6.*",
     "name"        : "ABC",
+    "license"     : "Artistic-2.0",
     "version"     : "*",
     "description" : "Toolkit for dealing with ABC music notation",
     "depends"     : [],
