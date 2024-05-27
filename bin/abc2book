@@ -217,7 +217,7 @@ sub make-external-toc($tempdir, $pdf-file, @toc-extra-items, $toc-copyright, $to
     my $text = qqx/pdftotext -layout -f 1 -l 1 $pdf-file -/;
     my @unsorted-index;
     for $text.comb(/ ^^ \h* (\V+) \h+ (\d+) $$ /, :match) -> $match {
-        @toc-items.push($match[0].Str.trim => ~$match[1]);
+        @toc-items.push(make-latex-name($match[0].Str.trim) => ~$match[1]);
     }
 
     my $toc-tex = IO::Path.new(basename => "toc.tex", dirname => $tempdir);
