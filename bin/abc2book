@@ -622,7 +622,10 @@ multi sub MAIN($abc-file, $book-file, :$no-cover?, :$tunes-in-toc?, :$notes-file
 
     sub merge-pdfs(@pdfs, $result-file) {
         my $temp-file = IO::Path.new(basename => "temp.pdf", dirname => $tempdir);
-        run "qpdf", "--empty", 
+	#	        say ("qpdf", "--warning-exit-0", "--empty",
+	#           "--pages", |@pdfs.map(*.Str), "--",
+	#           ~$temp-file).join(" ");
+        run "qpdf", "--warning-exit-0", "--empty",
                     "--pages", |@pdfs.map(*.Str), "--",
                     ~$temp-file;
         $temp-file.move($result-file);
