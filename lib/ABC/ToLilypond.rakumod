@@ -323,7 +323,9 @@ class TuneConvertor {
                     given $element.value {
                         when "||" { $notes ~= $need-special ?? ' \\bar ".|:-||"' !! ' \\bar "||"'; }
                         when "|]" { $notes ~= $need-special ?? ' \\bar ".|:-|."' !! ' \\bar "|."'; }
-                        default   { $notes ~= ' \\bar "|"'; }
+                        default   { 
+                            # $notes ~= ' \\bar "|"'; # this should be automatic -- except when this is wrong!!
+                        }
                     }
                     $notes ~= "\n";
                     $lilypond = "";
